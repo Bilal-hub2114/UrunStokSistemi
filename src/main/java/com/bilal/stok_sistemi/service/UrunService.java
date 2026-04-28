@@ -37,4 +37,14 @@ public class UrunService {
             }
         return liste;
     }
+    public void urunEkle(Urun yeniUrun){
+       try (java.io.FileWriter fw = new java.io.FileWriter("src/main/resources/urunler.csv",true);
+            java.io.BufferedWriter bw= new java.io.BufferedWriter(fw);
+            java.io.PrintWriter out = new java.io.PrintWriter(bw)) {
+             out.println(yeniUrun.getId()+","+yeniUrun.getAdi()+","+yeniUrun.getFiyat());
+       } catch(java.io.IOException e){
+           System.out.println("Dosyaya yazarken hata oluştu: "+ e.getMessage());
+       }
+
+    }
 }
